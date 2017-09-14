@@ -72,7 +72,7 @@ public class RetrofitServiceManager {
 
     private Retrofit getmRetrofit(String url, OkHttpClient.Builder builder){
 
-      return   mRetrofit = new Retrofit.Builder()
+      return    new Retrofit.Builder()
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

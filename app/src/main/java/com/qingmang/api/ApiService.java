@@ -33,8 +33,6 @@ public interface ApiService {
      * 登录
      * @param userName
      * @param passWd
-     * @param
-     * @param   http://47.74.133.184/SERVER_PROJECT/regist.php
      * @return
      */
     @FormUrlEncoded
