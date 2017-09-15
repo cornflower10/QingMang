@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.1.1"
 
-        buildConfigField 'String', 'URL', '"http://47.74.133.184/"'
+        buildConfigField 'String', 'URL', '"http://47.74.133.184/SERVER_PROJECT"'
         buildConfigField 'String', 'WHITELIST', '"release"'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -29,7 +29,7 @@ android {
 
     productFlavors {
         develop {
-            buildConfigField 'String', 'URL', '"http://47.74.133.184/"'
+            buildConfigField 'String', 'URL', '"http://47.74.133.184/SERVER_PROJECT/"'
             buildConfigField 'String', 'WHITELIST', '"dev"'
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "test", APP_ICON: "@drawable/logo_test", APP_LABEL: "@string/app_name_test"]
         }
@@ -61,6 +61,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile project(':uilibrary')
     compile project(':network')
     compile rootProject.ext.dependencies.recyclerView
     compile rootProject.ext.dependencies.design
@@ -69,10 +70,8 @@ dependencies {
     compile 'pub.devrel:easypermissions:1.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.5.1'
-
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'//防抖
-
-
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    //防抖
     compile 'com.github.bumptech.glide:glide:3.8.0'
     //在chrome查看数据库
     compile 'com.facebook.stetho:stetho:1.3.1'

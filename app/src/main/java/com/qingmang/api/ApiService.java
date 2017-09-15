@@ -15,19 +15,18 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-//
-//    /**
-//     * 获取短信验证码
-//     * @param userName
-//     * @param type
-//     * @param sign
-//     * @return
-//     */
-//    @FormUrlEncoded
-//    @POST("common/sendMobileCode")
-//    Observable<SMSEntity> getSms(@Field("mobile") String userName,
-//                                 @Field("mobileCodeType") String type,
-//                                 @Field("sign") String sign);
+    /**
+     * 注册
+     * @param userName
+     * @param type
+     * @param sign
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("regist.php")
+    Observable<BaseEntity> getSms(@Field("mobile") String userName,
+                                 @Field("mobileCodeType") String type,
+                                 @Field("sign") String sign);
 
     /**
      * 登录
@@ -36,7 +35,7 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST("SERVER_PROJECT/regist.php")
+    @POST("regist.php")
     Observable<BaseEntity<LoginEntity>> login(@Field("phone") String userName,
                                               @Field("password") String passWd
                                               );

@@ -2,8 +2,6 @@ package com.qingmang.baselibrary.utils;
 
 import android.util.Log;
 
-import com.qingmang.baselibrary.BuildConfig;
-
 
 /**
  * Created by caomingyu on 15/10/29.
@@ -11,7 +9,7 @@ import com.qingmang.baselibrary.BuildConfig;
 public class LogManager {
 
     private static final String TAG = "QINGMANG";
-    public static final boolean DEBUG = BuildConfig.DEBUG;
+    public static final boolean DEBUG = AppUtils.isDebug();
     public static void i(String msg){
         if(DEBUG){
             Log.i(TAG, msg);

@@ -2,6 +2,7 @@ package com.qingmang;
 
 import android.app.Application;
 
+import com.qingmang.baselibrary.utils.AppUtils;
 import com.qingmang.baselibrary.utils.ForegroundCallbacks;
 import com.qlzgzg.network.RetrofitServiceManager;
 
@@ -29,16 +30,18 @@ public class App extends Application {
         return foregroundCallbacks;
     }
 
-    public void setForegroundCallbacks(ForegroundCallbacks foregroundCallbacks) {
-        this.foregroundCallbacks = foregroundCallbacks;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         singleton = this;
         retrofitServiceManager  = new RetrofitServiceManager(BuildConfig.URL);
         foregroundCallbacks = ForegroundCallbacks.init(this);
+
+//        /**
+//         * 初始化log,获取是否为debug模式
+//          */
+        AppUtils.syncIsDebug(getApplicationContext());
+        AppUtils.isDebug();
 
     }
 

@@ -5,17 +5,10 @@
              android:background="@android:color/transparent"
              android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/fl_container"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/bottombar_height"
-        android:layout_height="match_parent"/>
-
-    <com.qingmang.uilibrary.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottombar_height"
-        android:layout_gravity="bottom"/>
+ <TextView
+     android:text="3"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content" />
 
     <!--<ImageView-->
         <!--android:layout_width="match_parent"-->
