@@ -127,11 +127,12 @@ public class MainActivity extends AppCompatActivity {
             findFragment = FindFragment.newInstance();
         }
         mFragments.add(homeFragment);
-        mFragments.add(myFragment);
         mFragments.add(findFragment);
+        mFragments.add(myFragment);
+
         transaction.add(R.id.fl_container,homeFragment);
-        transaction.add(R.id.fl_container,myFragment);
         transaction.add(R.id.fl_container,findFragment);
+        transaction.add(R.id.fl_container,myFragment);
         transaction.hide(myFragment);
         transaction.hide(findFragment);
         transaction.commit();
