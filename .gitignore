@@ -7,5 +7,6 @@
 /baselibrary/build
 /network/build
 /uilibrary/build
+.gradle
 /captures
 .externalNativeBuild

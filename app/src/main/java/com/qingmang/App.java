@@ -22,10 +22,6 @@ public class App extends Application {
         return singleton;
     }
 
-    public RetrofitServiceManager getRetrofitServiceManager() {
-        return  retrofitServiceManager;
-    }
-
     public ForegroundCallbacks getForegroundCallbacks() {
         return foregroundCallbacks;
     }
@@ -34,7 +30,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
-        retrofitServiceManager  = new RetrofitServiceManager(BuildConfig.URL);
+        retrofitServiceManager  = RetrofitServiceManager.getInstance(BuildConfig.URL);
         foregroundCallbacks = ForegroundCallbacks.init(this);
 
 //        /**

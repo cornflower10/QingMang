@@ -3,10 +3,8 @@ package com.qlzgzg.network;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,29 +17,24 @@ public class RetrofitServiceManager {
     private static final int DEFAULT_READ_TIME_OUT = 10;
     private Retrofit mRetrofit;
 
-    public RetrofitServiceManager(String baseUrl){
+    private static RetrofitServiceManager instance;
+
+    private RetrofitServiceManager(String baseUrl){
         // 创建 OKHttpClient
         OkHttpClient.Builder builder = getBuild();
         // 创建Retrofit
         mRetrofit= getmRetrofit(baseUrl,builder);
     }
 
-    public RetrofitServiceManager(String baseUrl,Interceptor interceptor){
-        // 创建 OKHttpClient
-        OkHttpClient.Builder builder = getBuild();
-        builder.addInterceptor(interceptor);
-        // 创建Retrofit
-        mRetrofit = getmRetrofit(baseUrl,builder);
-    }
-
-    public RetrofitServiceManager(String baseUrl,List<Interceptor> interceptors){
-
-        OkHttpClient.Builder builder = getBuild();
-        for (Interceptor interceptor1:interceptors){
-            builder.addInterceptor(interceptor1);
+    public static synchronized RetrofitServiceManager getInstance(String baseUrl) {
+        if(instance==null){
+            synchronized (RetrofitServiceManager.class){
+                if(instance==null){
+                    instance = new RetrofitServiceManager(baseUrl);
+                }
+            }
         }
-        // 创建Retrofit
-        mRetrofit = getmRetrofit(baseUrl,builder);
+        return  instance;
     }
 
     /**
