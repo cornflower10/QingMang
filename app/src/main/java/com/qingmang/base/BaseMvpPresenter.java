@@ -1,6 +1,7 @@
 package com.qingmang.base;
 
-import android.content.Context;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by xiejingbao on 2018/1/9.
@@ -8,10 +9,33 @@ import android.content.Context;
 
 public class BaseMvpPresenter<V extends BaseView> implements Presenter<V> {
     private V v;
-    public Context context;
-    public BaseMvpPresenter(Context context){
-        this.context = context;
+
+    protected CompositeDisposable mCompositeDisposable;
+//    public Context context;
+//    public BaseMvpPresenter(Context context){
+//        this.context = context;
+//    }
+
+    protected void unSubscribe() {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.clear();
+        }
     }
+
+    protected void addSubscribe(Disposable subscription) {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(subscription);
+    }
+
+//    protected <U> void addRxBusSubscribe(Class<U> eventType, Consumer<U> act) {
+//        if (mCompositeDisposable == null) {
+//            mCompositeDisposable = new CompositeDisposable();
+//        }
+//        mCompositeDisposable.add(RxBus.getDefault().toDefaultFlowable(eventType, act));
+//    }
+
     @Override
     public void attachView(V mvpView) {
         this.v = mvpView;
@@ -20,6 +44,7 @@ public class BaseMvpPresenter<V extends BaseView> implements Presenter<V> {
 
     @Override
     public void detachView() {
+        unSubscribe();
         v = null;
 
     }

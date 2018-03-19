@@ -51,7 +51,33 @@ public class MainActivity extends AppCompatActivity {
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {
-                showHideFragment(mFragments.get(position));
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+               switch (position){
+                   case 0:
+                       if(null==homeFragment){
+                           homeFragment = HomeFragment.newInstance();
+                           transaction.add(R.id.fl_container,homeFragment);
+                       }
+                           showHideFragment(homeFragment);
+                       break;
+                   case 1:
+                       if(null==findFragment){
+                           findFragment = FindFragment.newInstance();
+                           transaction.add(R.id.fl_container,findFragment);
+                       }
+                       showHideFragment(findFragment);
+                       break;
+                   case 2:
+                       if(null==myFragment){
+                           myFragment = MyFragment.newInstance();
+                           transaction.add(R.id.fl_container,myFragment);
+                       }
+                       showHideFragment(myFragment);
+                       break;
+
+               }
+                transaction.commit();
+
             }
 
             @Override
@@ -96,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         android.app.FragmentManager manager = getFragmentManager();
-        if (homeFragment.isAdded()) {
+        if (null!=homeFragment&&homeFragment.isAdded()) {
             manager.putFragment(outState, "homeFragment", homeFragment);
         }
-        if (myFragment.isAdded()) {
+        if (null!=myFragment&&myFragment.isAdded()) {
             manager.putFragment(outState, "myFragment", myFragment);
         }
-        if (findFragment.isAdded()) {
+        if (null!=findFragment&&findFragment.isAdded()) {
             manager.putFragment(outState, "findFragment", findFragment);
         }
 
@@ -123,23 +149,35 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             homeFragment = HomeFragment.newInstance();
-            myFragment = MyFragment.newInstance();
-            findFragment = FindFragment.newInstance();
+//            myFragment = MyFragment.newInstance();
+//            findFragment = FindFragment.newInstance();
         }
+        if(null!=homeFragment)
         mFragments.add(homeFragment);
+        if(null!=findFragment)
         mFragments.add(findFragment);
+        if(null!=myFragment)
         mFragments.add(myFragment);
 
+        if(null!=homeFragment)
         transaction.add(R.id.fl_container,homeFragment);
+        if(null!=findFragment)
         transaction.add(R.id.fl_container,findFragment);
+        if(null!=myFragment)
         transaction.add(R.id.fl_container,myFragment);
+
+        if(null!=myFragment)
         transaction.hide(myFragment);
+        if(null!=findFragment)
         transaction.hide(findFragment);
         transaction.commit();
     }
     public void showHideFragment(Fragment fragment){
        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
+        if(!mFragments.contains(fragment)){
+            mFragments.add(fragment);
+        }
         for (Fragment f:mFragments) {
             if(fragment.equals(f)){
                 fragmentTransaction.show(fragment);

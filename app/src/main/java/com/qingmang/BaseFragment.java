@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qingmang.baselibrary.utils.LogManager;
+import com.qingmang.uilibrary.loadview.LoadViewHelper;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,6 +24,8 @@ public abstract class BaseFragment extends Fragment {
     private boolean isFragmentVisible;
     //是否是第一次开启网络加载
     public boolean isFirst;
+    protected LoadViewHelper loadViewHelper;
+    protected abstract View getRootView();
 
     @Nullable
     @Override
@@ -31,6 +34,8 @@ public abstract class BaseFragment extends Fragment {
             rootView = inflater.inflate(getLayoutResource(), container, false);
         mUnbinder = ButterKnife.bind(this, rootView);
         LogManager.i("BaseFragment");
+        if(null!=getRootView())
+            loadViewHelper = new LoadViewHelper(getRootView());
         initView();
         //可见，但是并没有加载过
         if (isFragmentVisible && !isFirst) {

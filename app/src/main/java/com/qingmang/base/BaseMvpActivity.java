@@ -38,6 +38,7 @@ public class BaseMvpActivity<P extends Presenter<V>,V extends BaseView> extends 
 
     }
 
+
     @Override
     protected void onDestroy() {
         presenter.detachView();

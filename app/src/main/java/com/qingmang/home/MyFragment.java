@@ -1,6 +1,7 @@
 package com.qingmang.home;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.qingmang.BaseFragment;
 import com.qingmang.R;
@@ -12,13 +13,18 @@ import com.qingmang.baselibrary.utils.LogManager;
 
 public class MyFragment extends BaseFragment {
     @Override
+    protected View getRootView() {
+        return null;
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.fragment_my;
     }
 
     @Override
     protected void initView() {
-
+        LogManager.i("MyFragment-----");
     }
 
     public static MyFragment newInstance() {
