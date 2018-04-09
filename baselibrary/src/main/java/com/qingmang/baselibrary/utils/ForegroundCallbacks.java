@@ -149,7 +149,7 @@ public class ForegroundCallbacks implements Application.ActivityLifecycleCallbac
     /**
      * 退出应用程序
      */
-    public void AppExit() {
+    public void appExit() {
         try {
             finishAllActivity();
         } catch (Exception e) {

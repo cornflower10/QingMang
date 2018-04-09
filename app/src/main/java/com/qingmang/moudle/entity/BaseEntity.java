@@ -9,31 +9,31 @@ import java.io.Serializable;
 public class BaseEntity<T> implements Serializable{
 
     //"code":"1","msg":"OK","data":"null"
-    private String code;
-    private String msg;
-    private T t;
+    private String status;
+    private String detail;
+    private T data;
 
-    public String getCode() {
-        return code;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
-    public T getT() {
-        return t;
+    public T getData() {
+        return data;
     }
 
-    public void setT(T t) {
-        this.t = t;
+    public void setData(T data) {
+        this.data = data;
     }
 }

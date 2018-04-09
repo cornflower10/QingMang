@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/QingMang.iml" filepath="$PROJECT_DIR$/.idea/QingMang.iml" />
-      <module fileurl="file://D:\cornflower\projectDemo\QingMang\QingMang.iml" filepath="D:\cornflower\projectDemo\QingMang\QingMang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../QingMang/QingMang.iml" filepath="$PROJECT_DIR$/../../QingMang/QingMang.iml" />
+      <module fileurl="file://D:\cornflower\projectDemo\project\QingMang\.idea\QingMang.iml" filepath="D:\cornflower\projectDemo\project\QingMang\.idea\QingMang.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
