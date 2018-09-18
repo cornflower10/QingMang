@@ -18,11 +18,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.qingmang.R.id.fl_container;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(fl_container)
+    @BindView(R.id.fl_container)
     FrameLayout flContainer;
     @BindView(R.id.bottomBar)
     BottomBar mBottomBar;
